@@ -1,0 +1,113 @@
+@import "../../scss/variable";;
+
+.bgColor{
+    background:#f2f2f2;
+    height: 100vh;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    text-decoration: none;
+    border-radius: 0 12px 12px 0;
+    padding: 1.6rem 0;
+  }
+  
+  .activeNavItem {
+    background-color: $white;
+    padding: 1.6rem 3.1rem;
+    border-left: solid 4px #277c78;
+  }
+  
+  .baritem {
+    display: flex;
+    align-items: center;
+  }
+  
+
+.saidbar{
+    height: 100vh;
+    background-color: $grey-900;
+    border-top-right-radius: $spacing-200;
+    border-bottom-right-radius: $spacing-200;
+    display: flex;
+    flex-direction: column;
+}
+
+.saidbar_logo{
+    margin: 40px auto 40px 32px;
+}
+
+.sidebar_Navigation{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: auto;
+    flex-grow: 1;
+}
+
+
+.Link{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 700;
+    font-size: $text-preset-3;
+    color: $grey-300;
+    padding-top: 16px ;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    margin-right: 24px;
+    border-top-right-radius:12px;
+    border-bottom-right-radius:12px;
+    &:active, &:hover{
+     border-left: 4px solid $green;
+     background: $beige-100;
+     color: $grey-900;
+     img{
+        color: $green;
+     }
+    }
+}
+
+
+
+.sidbarBelow{
+margin-bottom: 58px;
+
+}
+
+.activeNavItem {
+    background-color: $white;
+    padding: 1.6rem 3.1rem;
+    border-left: solid 4px #277c78;
+  }
+  h4 {
+    margin-left: 1rem;
+    color: #b3b3b3;
+    font-size: $text-preset-3;
+  }
+  
+
+
+.LinkBelow{
+    display: flex;
+    align-items:center;
+    gap: 16px;
+    margin-left: 32px;
+    font-size: $text-preset-3;
+    color: $grey-300;
+}
+
+
+
+
+
+
+  
+
+
+@media (max-width:768px){
+    .bgColor{display: none;}
+}

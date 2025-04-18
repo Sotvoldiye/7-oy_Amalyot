@@ -1,0 +1,45 @@
+@import "../../scss/variable";
+@media (max-width:1440px), (min-width:769px){
+    .MobileSideBar{
+        display: none;
+    }
+}
+
+@media (max-width:768px){
+    .MobileSideBar{
+        flex-grow: 1;
+        display: flex;
+        background-color: $grey-900;
+        padding: 8px;
+        width: 100%;
+        border-top-right-radius:8px;
+        border-top-left-radius: 8px;
+    }
+    .sidebar_Mobile_Navigation{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .Link{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding:8px 25px 0 25px;
+        // padding-bottom: -10px;
+        font-weight: 700;
+        font-size: $text-preset-3;
+        color: $grey-300;
+        border-top-right-radius:12px;
+        border-top-left-radius:12px;
+        &:active, &:hover{
+         border-bottom: 4px solid $green;
+         background: $beige-100;
+         color: $grey-900;
+         img{
+            color: $green;
+         }
+        }
+    }
+}
