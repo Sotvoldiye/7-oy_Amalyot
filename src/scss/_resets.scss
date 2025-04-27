@@ -1,0 +1,46 @@
+@use './variables' as *;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+img {
+  display: flex;
+  object-fit: cover;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  
+}
+
+body {
+  font-family: "Public Sans";
+  width: 100vw;
+  height: 100%;
+  background-color: $beige-100;
+  overflow-x: hidden;
+}
+
+:root {
+  width: 100%;
+}
+
+
+.container {
+
+}
