@@ -1,24 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Overview.module.scss";
 import { useCollectionsData } from "../../hooks/useCollectionsData";
 import { FaCaretRight } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { Chart } from "../../components/Chart/ApexChart";
 const Overview = () => {
   const { data, isPending } = useCollectionsData();
-  console.log(data);
-
+  const [pots, setPots] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [budgets, setBudgets] = useState([])
+  const [budgetTotal, setBudgetTotal] = useState(0)
+  useEffect(() => {
+      if (data && data.pots) {
+          setPots(data.pots);
+            const totalSum = data.pots.reduce((acc, item) => acc + item.total, 0);
+          setTotal(totalSum);
+      }
+      if(data && data.budgets){
+          setBudgets(data.budgets)
+          const totalBudgets = data.budgets.reduce((acc, item)=> acc + item.maximum, 0)
+          setBudgetTotal(totalBudgets)
+      }
+  }, [data]);
+  console.log(data)
+  
   return (
     <div className={style.overviewContainer}>
       <h1 className={style.overTitle}>Overview</h1>
       <div className={style.overviewContent}>
         <ul className={style.overAmounts}>
-          <li className={style.overAmountsItem}>
+          <li  className={style.overAmountsItem}>
             <p className={style.currentBalanceTitle}>Current Balance</p>
             <p className={style.currentBalance}>
               ${data && data.balance.current}.00
             </p>
           </li>
-          <li className={style.overAmountsItem}>
+          <li  className={style.overAmountsItem}>
             <p className={style.currentBalanceTitle}>Income</p>
             <p className={style.currentBalance}>
               ${data && data.balance.income}
@@ -45,21 +62,21 @@ const Overview = () => {
                 </NavLink>
               </div>
 
-              <ul className={style.potsContent}>
-                <li className={style.potsContentItem}>
+              <div className={style.potsContent}>
+                <div className={style.potsContentItem}>
                   <img src="./images/icon-pot.svg" alt="" />
                   <div className={style.itemInto}>
                     <p className={style.itemIntoTotalSaved}>Total Saved</p>
-                    <h5 className={style.itemIntoTotalSavedAmount}>$850</h5>
+                    <h5 className={style.itemIntoTotalSavedAmount}>${total}</h5>
                   </div>
-                </li>
+                </div>
 
-                <li className={style.potsContentItem}>
+                <div className={style.potsContentItem}>
                   {data &&
                     data.pots.slice(0, 4).map((d) => {
                       return (
-                        <div className={style.itemIntoDiv}>
-                          <div className={style.itemIntoLine}></div>
+                        <div key={d.id} className={style.itemIntoDiv}>
+                          <div className={style.itemIntoLine} style={{backgroundColor:d.theme}}></div>
                           <div className={style.itemIntoContent}>
                             <p className={style.itemIntoTotalSavedSecond}>
                               {d.name}
@@ -73,8 +90,8 @@ const Overview = () => {
                         </div>
                       );
                     })}
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
             {/* pots end */}
             <div className={style.pots}>
@@ -91,9 +108,9 @@ const Overview = () => {
                 {data &&
                   data.transactions.map((t) => {
                     return (
-                      <li key={t.id} className={style.tranListItem}>
+                      <div key={t.id} className={style.tranListItem}>
                         <div className={style.tranItemPer}>
-                          <img src={t.avatar} alt={t.name} width={40} />
+                          <img src={t.avatar} alt={t.name} width={40} height={40} />
                           <h5>{t.name}</h5>
                         </div>
                         <div className={style.tranItemSec}>
@@ -103,7 +120,7 @@ const Overview = () => {
                                 -${Math.abs(t.amount)}
                               </p>
                             ) : (
-                              <p style={{ color: "green" }}>+${t.amount}</p>
+                              <p className={style.green}>+${t.amount}</p>
                             )}
                           </div>
 
@@ -116,7 +133,7 @@ const Overview = () => {
                             })}
                           </p>
                         </div>
-                      </li>
+                      </div>
                     );
                   })}
               </ul>
@@ -124,12 +141,22 @@ const Overview = () => {
           </div>
 
           <div className={style.budgetBills}>
-            <div className={style.budgets}>budget</div>
+            <div className={style.budgets}>
+            <div className={style.billsTitleView}>
+                <h2 className={style.potsTitle}>Budgets</h2>
+                <NavLink to="/budgets">
+                  <p className={style.viewPots}>
+                    See Details <FaCaretRight />
+                  </p>
+                </NavLink>
+              </div>
+                  {data ? <Chart budgetTotal={budgetTotal} budgets={data.budgets} /> :   <p>Loading ...</p>           }
+            </div>
 
             <div className={style.bills}>
             <div className={style.billsTitleView}>
-                <h2 className={style.potsTitle}>Transactions</h2>
-                <NavLink to="/transactions">
+                <h2 className={style.potsTitle}>Recurring Bills</h2>
+                <NavLink to="/recurringbills">
                   <p className={style.viewPots}>
                     See Details <FaCaretRight />
                   </p>

@@ -40,7 +40,38 @@ body {
   width: 100%;
 }
 
+main{
+  width: 100%;
+  overflow-y: auto;
+}
 
-.container {
+.main_Layot {
+  display: grid;
+  grid-template-columns:  300px 1fr;
+}
+.main_Layot.sidebar {
+  grid-template-columns:  1fr;
+}
 
+.overContainer {
+  width: 300px;
+  height: 100vh;
+  background-color: $grey-900;
+  border-radius: 0 $spacing-200 $spacing-200 0;
+  // position: relative;
+  bottom: 0;
+  margin: 0;
+  align-items: start;
+  transition: 0.3s;
+
+}
+
+.overContainer.sidebar{
+  position: absolute;
+  width: 88px;
+
+}
+
+.main.sidebar{
+  padding-left: 88px;
 }

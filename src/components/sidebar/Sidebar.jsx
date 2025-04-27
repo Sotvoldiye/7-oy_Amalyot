@@ -2,14 +2,24 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import style from "./Sidebar.module.scss";
 
-const Sidebar = () => {
+const Sidebar = ({showSidebar, setShowSidebar}) => {
   return (
-    <div className={style.overContainer}>
-      <img
+    <div className={`overContainer ${showSidebar ? "sidebar" : ""}`}>
+      {
+        showSidebar ? (
+          <img
+        src="./images/logo-small.svg"
+        alt="Logo"
+        className={style.overLogo}
+      />
+        ) : (
+          <img
         src="./images/logo-large.svg"
         alt="Logo"
         className={style.overLogo}
       />
+        )
+      }
       <div className={style.overHighDiv}>
         <div className={style.sidebarNav}>
           <NavLink
@@ -130,8 +140,9 @@ const Sidebar = () => {
           </NavLink>
         </div>
 
-        <NavLink
-          to="/"
+      <div className={style.minimizeMenu}>
+      <button 
+          onClick={() => setShowSidebar(!showSidebar)}
           className={style.navItemHideMenu}
           style={{
             paddingLeft: "3.5rem",
@@ -151,7 +162,8 @@ const Sidebar = () => {
             </svg>
             <h4>Minimize Menu</h4>
           </div>
-        </NavLink>
+        </button>
+      </div>
       </div>
     </div>
   );
