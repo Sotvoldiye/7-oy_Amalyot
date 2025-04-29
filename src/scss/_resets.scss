@@ -75,3 +75,11 @@ main{
 .main.sidebar{
   padding-left: 88px;
 }
+
+#my-chart .apexcharts-legend{
+  display: none;
+}
+
+#react-select-container, .react-select__control{
+  background-color:red;
+}

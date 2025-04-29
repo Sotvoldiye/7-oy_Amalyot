@@ -1,23 +1,24 @@
 import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import style from  "./Chart.module.scss"
-export const Chart = ({ budgets, budgetTotal }) => {
+import style from "./Chart.module.scss";
 
+export const Chart = ({ budgets, budgetTotal }) => {
   console.log(budgets)
   const [state, setState] = useState({
-    series:budgets.map((m)=> m.maximum),
+    series: budgets.map((m) => m.maximum),
     options: {
       chart: {
         type: "donut",
+        fontFamily: "Public Sans",
       },
       labels: budgets.map((c) => c.category),
-      colors:budgets.map((c)=> c.theme),
+      colors: budgets.map((c) => c.theme),
       responsive: [
         {
           breakpoint: 580,
           options: {
             chart: {
-              width: 440,
+              width: 300, // Mobil qurilma uchun yaxshilandi
             },
             legend: {
               position: "bottom",
@@ -25,25 +26,39 @@ export const Chart = ({ budgets, budgetTotal }) => {
           },
         },
       ],
+      plotOptions: {
+        pie: {
+          donut: {
+            labels: {
+              show: true,
+              total: {
+                show: true,
+                label: "Total",
+                formatter: () => budgetTotal || 0,
+              },
+              name: {
+                show: true,
+              },
+              value: {
+                show: true,
+              },
+            },
+          },
+        },
+      },
     },
   });
 
   return (
-    <div>
-      <div className={style.diagramma} id="chart">
+    <div id="charts" className={style.chartContainer}>
+      <div id="chart">
         <ReactApexChart
           options={state.options}
           series={state.series}
           type="donut"
-          width={440}
+          width="100%"
         />
-  <div className={style.p}>
-    <h3>$338</h3>
-    <p>of ${budgetTotal} limit</p>
-  </div>
       </div>
-      <div id="html-dist">       
-      </div>
-    </div>
+        </div>
   );
 };

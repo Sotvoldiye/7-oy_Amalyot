@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import style from "./Budgets.module.scss"
 import { Chart } from '../../components/Chart/ApexChart'
 import { useCollectionsData } from '../../hooks/useCollectionsData';
+import { Dot } from '../../components/Select';
+import Input from '../../components/Input';
+ 
 const Budgets = () => {
     const { data, isPending } = useCollectionsData();
     const [pots, setPots] = useState([]);
@@ -20,9 +23,19 @@ const Budgets = () => {
             setBudgetTotal(totalBudgets)
         }
     }, [data]);
+
+
   return (
-    <div>
-                  {data ? <Chart budgetTotal={budgetTotal} budgets={data.budgets} /> :   <p>Loading ...</p>           }
+    <div className={style.budgetsContainer}>
+<div className={style.nav}>
+<h1>Budgets</h1>
+<button>+ Add Budgets</button>
+</div>
+     {data ? <Chart budgetTotal={budgetTotal} budgets={data.budgets} /> :   <p>Loading ...</p>           }
+     <div style={{width:'300px'}}>
+         
+
+     </div>
     </div>
   )
 }
