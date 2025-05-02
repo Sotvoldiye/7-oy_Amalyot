@@ -253,13 +253,20 @@
 }
 
 .budgets {
+  display: flex;
+  align-items:center;
+  flex-direction: column;
   width: 100%;
   max-width: 780px;
   height: 40rem;
   background-color: $white;
   padding: 32px;
-  .billsTitleView{
+  .budgetsTitle{
     margin-bottom: 20px;
+    align-items:center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 }
 

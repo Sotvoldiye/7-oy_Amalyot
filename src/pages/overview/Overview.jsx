@@ -142,7 +142,7 @@ const Overview = () => {
 
           <div className={style.budgetBills}>
             <div className={style.budgets}>
-            <div className={style.billsTitleView}>
+            <div className={style.budgetsTitle}>
                 <h2 className={style.potsTitle}>Budgets</h2>
                 <NavLink to="/budgets">
                   <p className={style.viewPots}>

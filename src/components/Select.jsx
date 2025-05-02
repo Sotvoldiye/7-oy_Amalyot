@@ -99,7 +99,7 @@ export function Dot() {
   };
 
   return (
-<div>
+    <div style={{display:'flex', flexDirection:'column', gap:'4px'}}>
         <label htmlFor="color-select">
         <span>Thehme</span>
       </label>

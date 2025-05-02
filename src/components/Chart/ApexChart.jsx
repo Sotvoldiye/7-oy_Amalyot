@@ -18,7 +18,7 @@ export const Chart = ({ budgets, budgetTotal }) => {
           breakpoint: 580,
           options: {
             chart: {
-              width: 300, // Mobil qurilma uchun yaxshilandi
+              width: 400, // Mobil qurilma uchun yaxshilandi
             },
             legend: {
               position: "bottom",
@@ -46,17 +46,20 @@ export const Chart = ({ budgets, budgetTotal }) => {
           },
         },
       },
+     
+      
+      
     },
   });
 
   return (
-    <div id="charts" className={style.chartContainer}>
+    <div id="my-chart" className={style.chartContainer}>
       <div id="chart">
         <ReactApexChart
           options={state.options}
           series={state.series}
           type="donut"
-          width="100%"
+          width={400}
         />
       </div>
         </div>

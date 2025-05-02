@@ -63,13 +63,19 @@ main{
   margin: 0;
   align-items: start;
   transition: 0.3s;
-
+  button{
+    width: auto;
+    background-color:transparent;
+    border: none;
+  }
 }
 
 .overContainer.sidebar{
   position: absolute;
   width: 88px;
-
+  h4{
+    display: none;
+  }
 }
 
 .main.sidebar{
@@ -83,3 +89,14 @@ main{
 #react-select-container, .react-select__control{
   background-color:red;
 }
+
+button:hover{
+  cursor: pointer;
+}
+
+// @media (max-width:1024px){
+//   .main_Layot{
+//     display: grid;
+//     grid-template-columns: 1fr;
+//   }
+// }

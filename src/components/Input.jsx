@@ -17,7 +17,7 @@ function GroupedSelect() {
   ];
 
 
-  const [selectedOption, setSelectedOption] = useState(formSpend[2]);
+  const [selectedOption, setSelectedOption] = useState(formSpend[0]);
 
   const groupStyles = {
     display: "flex",
@@ -30,19 +30,20 @@ function GroupedSelect() {
     borderRadius: "2em",
     color: "#172B4D",
     display: "inline-block",
-    fontSize: 12,
+    fontSize: '14px',
     fontWeight: "normal",
     lineHeight: "1",
     minWidth: 1,
     padding: "0.16666666666667em 0.5em",
     textAlign: "center",
-  };
+
+  }
 
 
 
 
   return (
-    <div>
+    <div style={{display:'flex', flexDirection:'column', gap:'4px'}}>
         <label htmlFor="form-select">Budget Category</label>
     <Select
     inputId="form-select"
